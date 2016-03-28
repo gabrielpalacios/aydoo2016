@@ -17,7 +17,7 @@ public class Program {
 
 				System.out.print("Factores primos " + numero + ": ");
 				for (int i = 0; i < vectorObtenido.size(); i++) {
-					System.out.println(vectorObtenido.get(i).intValue() + " ");
+					System.out.print(vectorObtenido.get(i).intValue() + " ");
 				}
 
 				System.out.print("\n");
@@ -29,7 +29,7 @@ public class Program {
 
 					int tamano = vectorObtenido.size();
 					for (int i = 0; i < vectorObtenido.size(); i++) {
-						System.out.println(vectorObtenido.get(tamano - i)
+						System.out.println(vectorObtenido.get(tamano - i -1)
 								.intValue() + " ");
 					}
 				} else {
