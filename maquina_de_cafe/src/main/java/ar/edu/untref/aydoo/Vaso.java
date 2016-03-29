@@ -18,16 +18,6 @@ public class Vaso {
 	}
 
 	public void setAzucar (int cucharadasAAgregarDeAzucarAlVaso) {
-
-//		if(cucharadasAAgregarDeAzucarAlVaso < 0){
-//			try {
-//				throw new Exception("No existen cantidades negativas de azucar.");
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-
 		this.cantidadQueTieneDeCucharadasDeAzucar = cucharadasAAgregarDeAzucarAlVaso;
 	}
 
@@ -39,7 +29,7 @@ public class Vaso {
 	public void setCafe  (boolean pongoCafe) {
 		
 		
-		this.tieneCafe = pongoCafe;		
+		this.tieneCafe = pongoCafe;	
 	}
 
 	public boolean getLeche() {
