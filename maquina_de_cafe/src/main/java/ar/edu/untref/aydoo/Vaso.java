@@ -1,7 +1,7 @@
 package ar.edu.untref.aydoo;
 
 public class Vaso {
-
+ 
 	private int cantidadQueTieneDeCucharadasDeAzucar;
 	private boolean tieneCafe;
 	private boolean tieneLeche;
