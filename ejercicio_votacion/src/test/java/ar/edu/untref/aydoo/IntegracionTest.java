@@ -45,7 +45,7 @@ public class IntegracionTest {
 
 	}
 
-	
+	 
 	
 	
 	@Test
@@ -56,3 +56,4 @@ public class IntegracionTest {
 
 		Assert.assertEquals(1, altamira.getCantidadVotosSacados());
 	}
+}
