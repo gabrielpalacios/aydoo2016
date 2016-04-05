@@ -108,4 +108,36 @@ public class IntegracionTest {
 				eleccionGeneral.getPartidoMasVotadoProvinciaDada(salta));
 	}
 	
+		@Test
+	public void candidatoMasVotadoNacional() throws Exception {
+
+		Voto voto1 = new Voto(altamira, bsas);
+		Voto voto2 = new Voto(altamira, salta);
+		Voto voto3 = new Voto(macri, sanluis);
+		Voto voto4 = new Voto(macri, sanluis);
+		Voto voto5 = new Voto(delcano, sanluis);
+		Voto voto6 = new Voto(macri, bsas);
+		Voto voto10 = new Voto(delcano, sanluis);
+		Voto voto11 = new Voto(altamira, bsas);
+		Voto voto12 = new Voto(altamira, bsas);
+		Voto voto13 = new Voto(delcano, salta);
+		Voto voto14 = new Voto(altamira, sanluis);
+
+		eleccionGeneral.votar(voto1);
+		eleccionGeneral.votar(voto2);
+		eleccionGeneral.votar(voto3);
+		eleccionGeneral.votar(voto4);
+		eleccionGeneral.votar(voto5);
+		eleccionGeneral.votar(voto6);
+		eleccionGeneral.votar(voto10);
+		eleccionGeneral.votar(voto11);
+		eleccionGeneral.votar(voto12);
+		eleccionGeneral.votar(voto13);
+		eleccionGeneral.votar(voto14);
+
+		Assert.assertEquals(altamira,
+				eleccionGeneral.getCandidatoMasVotadoNacional());
+	}
+
+	
 }
