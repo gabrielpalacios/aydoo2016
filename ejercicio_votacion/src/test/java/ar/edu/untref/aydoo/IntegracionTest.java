@@ -79,4 +79,33 @@ public class IntegracionTest {
 
 		Assert.assertEquals(1, altamira.getCantidadVotosSacados());
 	}
+	
+	
+	@Test
+	public void partidoMasVotadoEnSalta() throws Exception {
+
+		Voto voto1 = new Voto(altamira, salta);
+		Voto voto2 = new Voto(altamira, salta);
+		Voto voto3 = new Voto(delcano, salta);
+		Voto voto4 = new Voto(macri, salta);
+		Voto voto5 = new Voto(macri, salta);
+		Voto voto6 = new Voto(delcano, salta);
+		Voto voto7 = new Voto(macri, salta);
+		Voto voto8 = new Voto(altamira, salta);
+		Voto voto9 = new Voto(macri, salta);
+
+		eleccionGeneral.votar(voto1);
+		eleccionGeneral.votar(voto2);
+		eleccionGeneral.votar(voto3);
+		eleccionGeneral.votar(voto4);
+		eleccionGeneral.votar(voto5);
+		eleccionGeneral.votar(voto6);
+		eleccionGeneral.votar(voto7);
+		eleccionGeneral.votar(voto8);
+		eleccionGeneral.votar(voto9);
+
+		Assert.assertEquals(fit,
+				eleccionGeneral.getPartidoMasVotadoProvinciaDada(salta));
+	}
+	
 }
