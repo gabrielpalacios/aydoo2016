@@ -139,5 +139,19 @@ public class IntegracionTest {
 				eleccionGeneral.getCandidatoMasVotadoNacional());
 	}
 
+
+	@Test
+	public void prohibidoVotarCandidatoNoValidoEnEleccionGeneral()
+			throws Exception {
+
+		Partido humanista = new Partido("humanista");
+		Candidato diaz = new Candidato("diaz", humanista);
+		bsas.cargaPartido(humanista);
+
+		Voto falsoVoto = new Voto(diaz, bsas);
+
+		Assert.assertFalse(eleccionGeneral.votar(falsoVoto));
+	}
+	
 	
 }
