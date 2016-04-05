@@ -46,6 +46,29 @@ public class IntegracionTest {
 	}
 
 	 
+	 @Test
+	public void votosMismoCandidatoVariasProvincias() throws Exception {
+
+		Voto voto1 = new Voto(macri, bsas);
+		Voto voto2 = new Voto(macri, bsas);
+		Voto voto5 = new Voto(macri, sanluis);
+		Voto voto6 = new Voto(macri, sanluis);
+		Voto voto7 = new Voto(macri, sanluis);
+		Voto voto8 = new Voto(macri, sanluis);
+		Voto voto9 = new Voto(macri, salta);
+
+		eleccionGeneral.votar(voto1);
+		eleccionGeneral.votar(voto2);
+		eleccionGeneral.votar(voto5);
+		eleccionGeneral.votar(voto6);
+		eleccionGeneral.votar(voto7);
+		eleccionGeneral.votar(voto8);
+		eleccionGeneral.votar(voto9);
+
+		Assert.assertEquals(7, macri.getCantidadVotosSacados());
+	}
+	
+	
 	
 	
 	@Test
