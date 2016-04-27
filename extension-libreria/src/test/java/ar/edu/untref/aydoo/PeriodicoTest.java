@@ -38,14 +38,14 @@ public class PeriodicoTest {
 		Assert.assertEquals(20.0, pagina12.getPrecio(), 0.0);
 	}
 
-	@Test(expected=Exception.class)
+	@Test(expected = Exception.class)
 	public void seImpideAgregarPeriodicidadNulaAlPeriodico() throws Exception {
 
 		@SuppressWarnings("unused")
 		Periodico pagina12 = new Periodico(null, 0.0, 0);
 	}
 
-	@Test(expected=Exception.class)
+	@Test(expected = Exception.class)
 	public void seImpideAgregarPeriodicidadNegativaAlPeriodico() throws Exception {
 
 		@SuppressWarnings("unused")

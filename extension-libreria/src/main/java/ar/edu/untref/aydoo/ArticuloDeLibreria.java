@@ -10,7 +10,7 @@ public class ArticuloDeLibreria extends Producto {
 		this.setIVA();
 	}
 
-	private void setIVA(){
+	private void setIVA() {
 
 		this.IVA = super.getPrecio() * 0.21;
 	}
@@ -18,9 +18,9 @@ public class ArticuloDeLibreria extends Producto {
 	public Double getIVA() {
 
 		return this.IVA;
-	}	
+	}
 
-	public Double getPrecio(){
+	public Double getPrecio() {
 
 		return super.getPrecio() + this.getIVA();
 	}

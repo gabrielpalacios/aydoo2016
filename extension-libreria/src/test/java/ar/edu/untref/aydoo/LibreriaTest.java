@@ -1,6 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class LibreriaTest {
@@ -53,7 +54,7 @@ public class LibreriaTest {
 	}
 
 	@Test
-	public void libreriaIndicaElMontoACobrarAUnClienteSinSuscripcionesEnUnMesDeterminado() throws Exception{
+	public void libreriaIndicaElMontoACobrarAUnClienteSinSuscripcionesEnUnMesDeterminado() throws Exception {
 
 		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
@@ -69,11 +70,11 @@ public class LibreriaTest {
 		compra.agregarProducto(lapicera2);
 		compra.agregarProducto(elgrafico);
 
-		Assert.assertEquals(92.1, libreria.calcularMontoACobrar(cliente,  Mes.AGOSTO), 0.0);
+		Assert.assertEquals(92.1, libreria.calcularMontoACobrar(cliente, Mes.AGOSTO), 0.0);
 	}
 
 	@Test
-	public void libreriaIndicaElMontoACobrarAUnClienteConSuscripcionAnualEnUnMesDeterminado() throws Exception{
+	public void libreriaIndicaElMontoACobrarAUnClienteConSuscripcionAnualEnUnMesDeterminado() throws Exception {
 
 		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
 		Cliente cliente = new Cliente("maria gutierrez", "Nueva York 1572, CABA");
@@ -88,7 +89,56 @@ public class LibreriaTest {
 		suscripcion.agregarProducto(barcelona);
 		compra.agregarProducto(pagina12);
 
-		Assert.assertEquals(44.0, libreria.calcularMontoACobrar(cliente,  Mes.ENERO), 0.0);
+		Assert.assertEquals(44.0, libreria.calcularMontoACobrar(cliente, Mes.ENERO), 0.0);
 	}
 
+	@Test
+	public void libreriaalquilerSemanal() throws Exception {
+
+		Libreria miLibreria;
+		Cliente pepe;
+
+		Compra comprasDeOctubre;
+
+		pepe = new Cliente("pepe", "vvv 2334");
+		Libro elHobbit;
+		miLibreria = new Libreria("La Libreria", "");
+		elHobbit = new Libro("El Hobbit", 50.0);
+		AlquilerLibroDiario alquilerDe7dias;
+		alquilerDe7dias = new AlquilerLibroDiario("Alquiler 7 dias", 0, 40);
+		alquilerDe7dias.setLibroAlquilado(elHobbit);
+		alquilerDe7dias.setDiasDelAlquiler(7);
+
+		comprasDeOctubre = new Compra(Mes.AGOSTO);
+		comprasDeOctubre.agregarProducto(alquilerDe7dias);
+		pepe.agregarCompra(comprasDeOctubre);
+		miLibreria.agregarCliente(pepe);
+
+		Assert.assertEquals(280.0, miLibreria.calcularMontoACobrar(pepe, Mes.AGOSTO), 0.1);
+	}
+
+	@Test
+	public void alquilaCuatrimestre() throws Exception {
+
+		Libreria miLibreria;
+		Cliente cliente;
+		Libro elHobbit;
+		Compra comprasMayo;
+
+		miLibreria = new Libreria("Cuspide", "");
+		cliente = new Cliente("pepe", "lujan 12");
+		elHobbit = new Libro("El Hobbit", 50.0);
+		comprasMayo = new Compra(Mes.MAYO);
+		AlquilerLibroCuatrimestral alquilerDelHobbit = new AlquilerLibroCuatrimestral(
+				"Alquila cuatrimestre de El Hobbit", 0, 200);
+		alquilerDelHobbit.setCuatrimestresDelAlquiler(1);
+
+		alquilerDelHobbit.setLibroAlquilado(elHobbit);
+
+		comprasMayo.agregarProducto(alquilerDelHobbit);
+		cliente.agregarCompra(comprasMayo);
+		miLibreria.agregarCliente(cliente);
+
+		Assert.assertEquals(720.0, miLibreria.calcularMontoACobrar(cliente, Mes.MAYO), 0.1);
+	}
 }

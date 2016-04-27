@@ -1,6 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Cliente {
@@ -48,7 +49,7 @@ public class Cliente {
 
 	public void eliminarCompra(Compra compra) throws Exception {
 
-		if(this.listaDeCompras.contains(compra)){
+		if (this.listaDeCompras.contains(compra)) {
 
 			int posicionDeLaCompraEnLaLista = this.listaDeCompras.indexOf(compra);
 			this.listaDeCompras.remove(posicionDeLaCompraEnLaLista);
@@ -63,15 +64,31 @@ public class Cliente {
 
 		List<Compra> comprasDelMes = new ArrayList<Compra>();
 
-		for(Compra c : this.listaDeCompras){
+		for (Compra c : this.listaDeCompras) {
 
-			if(c.getMes() == mes){
+			if (c.getMes() == mes) {
 
 				comprasDelMes.add(c);
 			}
 		}
 
 		return comprasDelMes;
+	}
+
+	public double calcularGastoDelMes(Mes mes) {
+
+		double total = 0;
+		Iterator<Compra> iterador = listaDeCompras.iterator();
+
+		while (iterador.hasNext()) {
+
+			Compra compraActual = iterador.next();
+
+			if (compraActual.getMes().equals(mes)) {
+				total += compraActual.getPrecioDeLaCompra();
+			}
+		}
+		return total;
 	}
 
 }

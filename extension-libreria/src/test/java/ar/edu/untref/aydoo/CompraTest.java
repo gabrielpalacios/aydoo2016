@@ -37,7 +37,7 @@ public class CompraTest {
 		Assert.assertFalse(compra.contiene(quijote));
 	}
 
-	@Test(expected=Exception.class)
+	@Test(expected = Exception.class)
 	public void compraNoEliminaProductoDeSuListaDeProductosSiNoLoPosee() throws Exception {
 
 		Compra compra = new Compra(null);
@@ -57,13 +57,13 @@ public class CompraTest {
 		compra.agregarProducto(elhobbit);
 		compra.agregarProducto(lapicera);
 		compra.agregarProducto(lapicera);
-		compra.agregarProducto(elgrafico);		
+		compra.agregarProducto(elgrafico);
 
 		Assert.assertEquals(92.1, compra.getPrecioDeLaCompra(), 0.0);
 	}
 
 	@Test
-	public void compraAgregaMesEnElCualFueHechaAlSerCreada(){
+	public void compraAgregaMesEnElCualFueHechaAlSerCreada() {
 
 		Compra compra = new Compra(Mes.AGOSTO);
 

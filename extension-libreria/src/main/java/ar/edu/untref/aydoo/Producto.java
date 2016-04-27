@@ -1,6 +1,6 @@
 package ar.edu.untref.aydoo;
 
-public class Producto {	
+public class Producto {
 
 	private String nombre;
 	private Double precio;
@@ -11,19 +11,19 @@ public class Producto {
 		this.setPrecio(precio);
 	}
 
-	public void setNombre(String string) {	
+	public void setNombre(String string) {
 
 		this.nombre = string;
 	}
 
-	public String getNombre() {		
+	public String getNombre() {
 
 		return this.nombre;
 	}
 
 	public void setPrecio(Double precio) throws Exception {
 
-		if(precio < 0){
+		if (precio < 0) {
 
 			throw new Exception("No se puede poner precio negativo a un producto");
 		}

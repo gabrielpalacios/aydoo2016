@@ -8,9 +8,9 @@ public class Periodico extends Producto {
 
 		super(nombre, precio);
 
-		if(periodicidad > 0){
+		if (periodicidad > 0) {
 
-			this.setPeriodicidad(periodicidad);	
+			this.setPeriodicidad(periodicidad);
 
 		} else {
 
@@ -26,6 +26,6 @@ public class Periodico extends Producto {
 	public Integer getPeriodicidad() {
 
 		return this.periodicidad;
-	}	
+	}
 
 }

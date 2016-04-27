@@ -6,7 +6,7 @@ import org.junit.Test;
 public class LibroTest {
 
 	@Test
-	public void seAgregaNombreAlLibro() throws Exception{
+	public void seAgregaNombreAlLibro() throws Exception {
 
 		Libro quijote = new Libro(null, 0.0);
 		quijote.setNombre("el quijote de la mancha");
@@ -15,7 +15,7 @@ public class LibroTest {
 	}
 
 	@Test
-	public void seAgregaPrecioAlLibro() throws Exception{
+	public void seAgregaPrecioAlLibro() throws Exception {
 
 		Libro quijote = new Libro(null, 0.0);
 		quijote.setPrecio(125.0);

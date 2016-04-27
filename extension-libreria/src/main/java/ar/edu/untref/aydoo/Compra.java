@@ -38,7 +38,7 @@ public class Compra {
 
 		Double precio = 0.0;
 
-		for(Producto p : this.listaDeProductos){
+		for (Producto p : this.listaDeProductos) {
 
 			precio += p.getPrecio();
 		}
@@ -48,14 +48,14 @@ public class Compra {
 
 	public void eliminarProducto(Producto producto) throws Exception {
 
-		if(this.contiene(producto)){
+		if (this.contiene(producto)) {
 
 			int posicionDelProductoEnLaLista = this.listaDeProductos.indexOf(producto);
 			this.listaDeProductos.remove(posicionDelProductoEnLaLista);
 
 		} else {
 
-			throw new Exception("La compra no incluye el producto que desea eliminar");			
+			throw new Exception("La compra no incluye el producto que desea eliminar");
 		}
 
 	}

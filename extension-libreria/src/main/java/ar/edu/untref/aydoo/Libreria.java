@@ -52,7 +52,7 @@ public class Libreria {
 		comprasDelMes = cliente.getComprasDelMes(mes);
 		Double monto = 0.0;
 
-		for(Compra c : comprasDelMes){
+		for (Compra c : comprasDelMes) {
 
 			monto += c.getPrecioDeLaCompra();
 		}

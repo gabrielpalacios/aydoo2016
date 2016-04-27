@@ -18,7 +18,7 @@ public class ClienteTest {
 	}
 
 	@Test
-	public void seAgregaDireccionAlCliente(){
+	public void seAgregaDireccionAlCliente() {
 
 		Cliente cliente = new Cliente(null, null);
 
@@ -28,7 +28,7 @@ public class ClienteTest {
 	}
 
 	@Test
-	public void seAgregaNombreAlClienteCuandoEsCreado(){
+	public void seAgregaNombreAlClienteCuandoEsCreado() {
 
 		Cliente cliente = new Cliente("juan perez", null);
 
@@ -36,7 +36,7 @@ public class ClienteTest {
 	}
 
 	@Test
-	public void seAgregaDireccionAlClienteCuandoEsCreado(){
+	public void seAgregaDireccionAlClienteCuandoEsCreado() {
 
 		Cliente cliente = new Cliente(null, "Montes de Oca 4720, CABA");
 
@@ -44,7 +44,7 @@ public class ClienteTest {
 	}
 
 	@Test
-	public void clienteAgregaCompraASuListaDeCompras() throws Exception{
+	public void clienteAgregaCompraASuListaDeCompras() throws Exception {
 
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		Compra compra = new Compra(Mes.AGOSTO);
@@ -55,7 +55,7 @@ public class ClienteTest {
 	}
 
 	@Test
-	public void clienteAgregaSuscripcionASuListaDeCompras() throws Exception{
+	public void clienteAgregaSuscripcionASuListaDeCompras() throws Exception {
 
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		Suscripcion suscripcion = new Suscripcion(Mes.MARZO);
@@ -66,7 +66,7 @@ public class ClienteTest {
 	}
 
 	@Test
-	public void clienteEliminaCompraDeSuListaDeCompras() throws Exception{
+	public void clienteEliminaCompraDeSuListaDeCompras() throws Exception {
 
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		Compra compra = new Compra(Mes.AGOSTO);
@@ -77,7 +77,7 @@ public class ClienteTest {
 		Assert.assertFalse(cliente.haComprado(compra));
 	}
 
-	@Test(expected=Exception.class)
+	@Test(expected = Exception.class)
 	public void clienteNoEliminaCompraDeSuListaDeComprasSiNoLaHaHecho() throws Exception {
 
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
@@ -94,7 +94,7 @@ public class ClienteTest {
 		Compra compra2 = new Compra(Mes.JULIO);
 		Compra compra3 = new Suscripcion(Mes.JULIO);
 		Compra compra4 = new Suscripcion(Mes.OCTUBRE);
-		Compra compra5 = new Compra(Mes.MAYO);		
+		Compra compra5 = new Compra(Mes.MAYO);
 		cliente.agregarCompra(compra1);
 		cliente.agregarCompra(compra2);
 		cliente.agregarCompra(compra3);
@@ -115,7 +115,7 @@ public class ClienteTest {
 		Compra compra2 = new Compra(Mes.JULIO);
 		Compra compra3 = new Suscripcion(Mes.JULIO);
 		Compra compra4 = new Suscripcion(Mes.OCTUBRE);
-		Compra compra5 = new Compra(Mes.MAYO);		
+		Compra compra5 = new Compra(Mes.MAYO);
 		cliente.agregarCompra(compra1);
 		cliente.agregarCompra(compra2);
 		cliente.agregarCompra(compra3);

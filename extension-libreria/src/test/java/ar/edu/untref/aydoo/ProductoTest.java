@@ -6,7 +6,7 @@ import org.junit.Test;
 public class ProductoTest {
 
 	@Test
-	public void seAgregaNombreAlProducto() throws Exception {	
+	public void seAgregaNombreAlProducto() throws Exception {
 
 		Producto productoDePrueba = new Producto(null, 0.0);
 
@@ -16,7 +16,7 @@ public class ProductoTest {
 	}
 
 	@Test
-	public void seAgregaPrecioAlProducto() throws Exception {		
+	public void seAgregaPrecioAlProducto() throws Exception {
 
 		Producto productoDePrueba = new Producto(null, 0.0);
 
@@ -41,8 +41,8 @@ public class ProductoTest {
 		Assert.assertEquals(12.0, productoDePrueba.getPrecio(), 0.0);
 	}
 
-	@Test(expected=Exception.class)
-	public void productoNoPermiteAgregrarUnPrecioNegativo() throws Exception{
+	@Test(expected = Exception.class)
+	public void productoNoPermiteAgregrarUnPrecioNegativo() throws Exception {
 
 		Producto productoDePrueba = new Producto(null, 0.0);
 

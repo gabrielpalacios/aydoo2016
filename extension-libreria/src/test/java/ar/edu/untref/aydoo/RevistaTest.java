@@ -38,14 +38,14 @@ public class RevistaTest {
 		Assert.assertEquals(20.0, barcelona.getPrecio(), 0.0);
 	}
 
-	@Test (expected=Exception.class)
+	@Test(expected = Exception.class)
 	public void seImpideAgregarPeriodicidadNulaALaRevista() throws Exception {
 
 		@SuppressWarnings("unused")
 		Revista barcelona = new Revista(null, 0.0, 0);
 	}
 
-	@Test (expected=Exception.class)
+	@Test(expected = Exception.class)
 	public void seImpideAgregarPeriodicidadNegativaALaRevista() throws Exception {
 
 		@SuppressWarnings("unused")
