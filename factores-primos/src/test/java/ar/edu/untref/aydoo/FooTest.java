@@ -13,4 +13,12 @@ public class FooTest
         String result = foo.doFoo();
         Assert.assertEquals("foo", result);
     }
+    
+    @Test
+    public void doFooShouldReturnFooModeFalse()
+    {
+        Foo foo = new Foo();
+        String result = foo.doFoo();
+        Assert.assertNotSame("jajaja", result);
+    }
 }
