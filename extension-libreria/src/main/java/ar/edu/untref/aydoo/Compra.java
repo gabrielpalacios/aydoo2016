@@ -6,7 +6,16 @@ import java.util.List;
 public class Compra {
 
 	private Mes mes;
-	protected List<Producto> listaDeProductos;
+	//protected List<Producto> listaDeProductos;
+	private List<Producto> listaDeProductos;
+
+	public List<Producto> getListaDeProductos() {
+		return listaDeProductos;
+	}
+
+	public void setListaDeProductos(List<Producto> listaDeProductos) {
+		this.listaDeProductos = listaDeProductos;
+	}
 
 	public Compra(Mes mes) {
 

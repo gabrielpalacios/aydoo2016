@@ -1,8 +1,8 @@
 package ar.edu.untref.aydoo;
 
-public class AlquilerLibroMensual extends AlquilerLibro {
+public class AlquilerMensual extends Alquiler {
 
-	public AlquilerLibroMensual(String nombre, double precio, int precioDiario) throws Exception {
+	public AlquilerMensual(String nombre, double precio, int precioDiario) throws Exception {
 		super(nombre, precio);
 		super.setPrecioPorPeriodo(precioDiario);
 	}
@@ -10,7 +10,7 @@ public class AlquilerLibroMensual extends AlquilerLibro {
 	public void setMesesDelAlquiler(int numeroDeMeses) throws Exception {
 
 		if (numeroDeMeses < 1 || numeroDeMeses > 3) {
-			throw new Exception();
+			throw new RuntimeException("El numero de meses no puede ser menor a 1 o mayor a 3");
 		}
 		super.setPeriodoDelAlquiler(numeroDeMeses);
 		super.setPrecio(((Double) (super.getPeriodoDelAlquiler() + 0.0) * (Double) (super.getPrecioPorPeriodo() + 0.0)));

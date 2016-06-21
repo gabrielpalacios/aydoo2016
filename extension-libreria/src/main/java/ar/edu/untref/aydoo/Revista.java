@@ -1,6 +1,6 @@
 package ar.edu.untref.aydoo;
 
-public class Revista extends Producto {
+public class Revista extends Producto implements AptoSuscripcion {
 
 	private Integer periodicidad;
 
@@ -11,6 +11,7 @@ public class Revista extends Producto {
 		if (periodicidad > 0) {
 
 			this.setPeriodicidad(periodicidad);
+			super.setSoportaSuscripcion(true);
 
 		} else {
 

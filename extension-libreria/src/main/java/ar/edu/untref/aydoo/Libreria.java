@@ -49,6 +49,7 @@ public class Libreria {
 	public Double calcularMontoACobrar(Cliente cliente, Mes mes) {
 
 		List<Compra> comprasDelMes;
+		if(this.esClienteRegistrado(cliente)){
 		comprasDelMes = cliente.getComprasDelMes(mes);
 		Double monto = 0.0;
 
@@ -58,6 +59,9 @@ public class Libreria {
 		}
 
 		return monto;
+		}
+		else
+			throw new RuntimeException("No se puede calcularMontoACobrar a un cliente no registrado!"); 
 	}
 
 }

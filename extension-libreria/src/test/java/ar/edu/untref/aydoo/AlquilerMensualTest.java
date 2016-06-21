@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AlquilerLibroMensualTest {
+public class AlquilerMensualTest {
 
 	private Libreria miLibreria;
 	private Cliente cliente;
@@ -23,7 +23,7 @@ public class AlquilerLibroMensualTest {
 	@Test
 	public void alquilerMensual() throws Exception {
 
-		AlquilerLibroMensual alquilerDelHobbit = new AlquilerLibroMensual("Alquiler Mensual", 0, 10);
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler Mensual", 0, 10);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 
 		Assert.assertEquals("El Hobbit", alquilerDelHobbit.getLibroAlquilado().getNombre());
@@ -32,7 +32,7 @@ public class AlquilerLibroMensualTest {
 	@Test
 	public void alquiler3Meses() throws Exception {
 
-		AlquilerLibroMensual alquilerDelHobbit = new AlquilerLibroMensual("Alquiler 3 meses", 0, 20);
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler 3 meses", 0, 20);
 		alquilerDelHobbit.setMesesDelAlquiler(3);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 
@@ -43,11 +43,18 @@ public class AlquilerLibroMensualTest {
 		Assert.assertEquals(60.0, miLibreria.calcularMontoACobrar(cliente, Mes.MAYO), 0.1);
 	}
 
-	@Test(expected = Exception.class)
-	public void alquilarMalPor20meses() throws Exception {
+	@Test(expected = RuntimeException.class)
+	public void alquilarPor20MesesNoSePuede() throws Exception {
 
-		AlquilerLibroMensual alquilerDelHobbit = new AlquilerLibroMensual("Alquiler por 20 messes", 0, 0);
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler por 20 meses", 0, 0);
 		alquilerDelHobbit.setMesesDelAlquiler(20);
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void alquilarPor0MesNoSePuede() throws Exception {
+
+		AlquilerMensual alquilerDelHobbit = new AlquilerMensual("Alquiler por 0 mes", 0, 0);
+		alquilerDelHobbit.setMesesDelAlquiler(0);
 	}
 
 }

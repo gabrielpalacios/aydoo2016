@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AlquilerLibroDiarioTest {
+public class AlquilerDiarioTest {
 
 	private Libreria miLibreria;
 	private Cliente cliente;
@@ -23,7 +23,7 @@ public class AlquilerLibroDiarioTest {
 	@Test
 	public void alquilerDiarioRegistraLibroAlquilado() throws Exception {
 
-		AlquilerLibroDiario alquilerDelHobbit = new AlquilerLibroDiario("Alquiler por 5 dias", 0, 0);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 5 dias", 1, 1);
 		alquilerDelHobbit.setDiasDelAlquiler(5);
 
 		Assert.assertEquals(5, alquilerDelHobbit.getPeriodoDelAlquiler(), 0);
@@ -32,7 +32,7 @@ public class AlquilerLibroDiarioTest {
 	@Test
 	public void alquilerDiarioRegistraDiasDelAlquiler() throws Exception {
 
-		AlquilerLibroDiario alquilerDelHobbit = new AlquilerLibroDiario("Alquiler El Hobbit", 0, 0);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler El Hobbit", 1, 1);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 
 		Assert.assertEquals("El Hobbit", alquilerDelHobbit.getLibroAlquilado().getNombre());
@@ -41,7 +41,7 @@ public class AlquilerLibroDiarioTest {
 	@Test
 	public void alquilaHobbitPor3Dias() throws Exception {
 
-		AlquilerLibroDiario alquilerDelHobbit = new AlquilerLibroDiario("Alquiler por 3 dias", 0, 10);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 3 dias", 0, 10);
 		alquilerDelHobbit.setDiasDelAlquiler(3);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 
@@ -55,7 +55,7 @@ public class AlquilerLibroDiarioTest {
 	@Test
 	public void alquilaHobbitPor24Dias() throws Exception {
 
-		AlquilerLibroDiario alquilerDelHobbit = new AlquilerLibroDiario("Alquiler por 24 dias", 0, 10);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 24 dias", 0, 10);
 		alquilerDelHobbit.setDiasDelAlquiler(24);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 
@@ -66,17 +66,24 @@ public class AlquilerLibroDiarioTest {
 		Assert.assertEquals(240.0, miLibreria.calcularMontoACobrar(cliente, Mes.MAYO), 0.1);
 	}
 
-	@Test(expected = Exception.class)
-	public void alquilarMenosDe3Dias() throws Exception {
+	@Test(expected = RuntimeException.class)
+	public void alquilarPorMenosDe3DiasNoSePuede() throws Exception {
 
-		AlquilerLibroDiario alquilerDelHobbit = new AlquilerLibroDiario("Alquiler por 2 dias", 0, 0);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 2 dias", 0, 0);
 		alquilerDelHobbit.setDiasDelAlquiler(2);
 	}
 
-	@Test(expected = Exception.class)
-	public void alquilaMasDe25Dias() throws Exception {
+	@Test(expected = RuntimeException.class)
+	public void alquilarPorMasDe25DiasNoSePuede() throws Exception {
 
-		AlquilerLibroDiario alquilerDelHobbit = new AlquilerLibroDiario("Alquiler por 26 dias", 0, 0);
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por 26 dias", 0, 0);
 		alquilerDelHobbit.setDiasDelAlquiler(26);
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void alquilarConDiasNegativosNoSePuede() throws Exception {
+
+		AlquilerDiario alquilerDelHobbit = new AlquilerDiario("Alquiler por -6 dias", 0, 0);
+		alquilerDelHobbit.setDiasDelAlquiler(-6);
 	}
 }

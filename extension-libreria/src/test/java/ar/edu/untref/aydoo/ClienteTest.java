@@ -127,5 +127,26 @@ public class ClienteTest {
 
 		Assert.assertTrue(comprasDeJulio.contains(compra3));
 	}
+	
+	@Test
+	public void clienteHace2ComprasEnJulio() {
+
+		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
+		Compra compra1 = new Compra(Mes.AGOSTO);
+		Compra compra2 = new Compra(Mes.JULIO);
+		Compra compra3 = new Suscripcion(Mes.JULIO);
+		Compra compra4 = new Suscripcion(Mes.OCTUBRE);
+		Compra compra5 = new Compra(Mes.MAYO);
+		cliente.agregarCompra(compra1);
+		cliente.agregarCompra(compra2);
+		cliente.agregarCompra(compra3);
+		cliente.agregarCompra(compra4);
+		cliente.agregarCompra(compra5);
+
+		List<Compra> comprasDeJulio;
+		comprasDeJulio = cliente.getComprasDelMes(Mes.JULIO);
+
+		Assert.assertEquals(2, comprasDeJulio.size());
+	}
 
 }

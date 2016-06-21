@@ -4,11 +4,21 @@ public class Producto {
 
 	private String nombre;
 	private Double precio;
+	private boolean soportaSuscripcion;
+
+	public boolean getSoportaSuscripcion() {
+		return soportaSuscripcion;
+	}
+
+	public void setSoportaSuscripcion(boolean soportaSuscripcion) {
+		this.soportaSuscripcion = soportaSuscripcion;
+	}
 
 	public Producto(String nombre, Double precio) throws Exception {
 
 		this.setNombre(nombre);
 		this.setPrecio(precio);
+		this.soportaSuscripcion = false;
 	}
 
 	public void setNombre(String string) {

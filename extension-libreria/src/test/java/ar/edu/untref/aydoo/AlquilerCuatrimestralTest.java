@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AlquilerLibroCuatrimestralTest {
+public class AlquilerCuatrimestralTest {
 
 	private Libreria miLibreria;
 	private Cliente cliente;
@@ -24,7 +24,7 @@ public class AlquilerLibroCuatrimestralTest {
 	@Test
 	public void getPeriodoDelAlquiler() throws Exception {
 
-		AlquilerLibroCuatrimestral alquilerDelHobbit = new AlquilerLibroCuatrimestral("Alquiler El Hobbit", 0, 0);
+		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler El Hobbit", 1, 1);
 		alquilerDelHobbit.setPeriodoDelAlquiler(2);
 
 		Assert.assertEquals(2, alquilerDelHobbit.getPeriodoDelAlquiler(), 0);
@@ -33,16 +33,16 @@ public class AlquilerLibroCuatrimestralTest {
 	@Test
 	public void getLibroAlquiladogetNombre() throws Exception {
 
-		AlquilerLibroCuatrimestral alquilerDelHobbit = new AlquilerLibroCuatrimestral("Alquiler de El Hobbit", 0, 10);
+		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquiler de El Hobbit", 0, 10);
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
 
 		Assert.assertEquals("El Hobbit", alquilerDelHobbit.getLibroAlquilado().getNombre());
 	}
 
-	@Test(expected = Exception.class)
+	@Test(expected = RuntimeException.class)
 	public void alquila44cuatris() throws Exception {
 
-		AlquilerLibroCuatrimestral alquilerDelHobbit = new AlquilerLibroCuatrimestral(
+		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral(
 				"Alquiler 44 cuatris de El Hobbit", 0, 0);
 		alquilerDelHobbit.setCuatrimestresDelAlquiler(44);
 	}

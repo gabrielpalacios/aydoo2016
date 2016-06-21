@@ -1,20 +1,20 @@
 package ar.edu.untref.aydoo;
 
-public class AlquilerLibro extends Producto {
+public class Alquiler extends Producto {
 
-	public AlquilerLibro(String nombreLibroAlquilado, Double precioLibroAlquilado) throws Exception {
+	public Alquiler(String nombreLibroAlquilado, Double precioLibroAlquilado) throws Exception {
 		super(nombreLibroAlquilado, precioLibroAlquilado);
 	}
 
-	private Libro libroAlquilado;
+	private Producto libroAlquilado;
 	private int precioPorPeriodo;
 	private int periodoDelAlquiler;
 
-	public Libro getLibroAlquilado() {
+	public Producto getLibroAlquilado() {
 		return this.libroAlquilado;
 	}
 
-	public void setLibroAlquilado(Libro libroAlquilado) {
+	public void setLibroAlquilado(Producto libroAlquilado) {
 		this.libroAlquilado = libroAlquilado;
 	}
 
@@ -23,7 +23,11 @@ public class AlquilerLibro extends Producto {
 	}
 
 	public void setPrecioPorPeriodo(int precioDiario) {
-		this.precioPorPeriodo = precioDiario;
+		if(precioDiario > 0){
+			this.precioPorPeriodo = precioDiario;		
+		}else{
+			throw new RuntimeException("El precio no puede ser negativo");
+		}
 	}
 
 	public int getPeriodoDelAlquiler() {

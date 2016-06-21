@@ -104,8 +104,8 @@ public class LibreriaTest {
 		Libro elHobbit;
 		miLibreria = new Libreria("La Libreria", "");
 		elHobbit = new Libro("El Hobbit", 50.0);
-		AlquilerLibroDiario alquilerDe7dias;
-		alquilerDe7dias = new AlquilerLibroDiario("Alquiler 7 dias", 0, 40);
+		AlquilerDiario alquilerDe7dias;
+		alquilerDe7dias = new AlquilerDiario("Alquiler 7 dias", 0, 40);
 		alquilerDe7dias.setLibroAlquilado(elHobbit);
 		alquilerDe7dias.setDiasDelAlquiler(7);
 
@@ -129,8 +129,8 @@ public class LibreriaTest {
 		cliente = new Cliente("pepe", "lujan 12");
 		elHobbit = new Libro("El Hobbit", 50.0);
 		comprasMayo = new Compra(Mes.MAYO);
-		AlquilerLibroCuatrimestral alquilerDelHobbit = new AlquilerLibroCuatrimestral(
-				"Alquila cuatrimestre de El Hobbit", 0, 200);
+		AlquilerCuatrimestral alquilerDelHobbit = new AlquilerCuatrimestral("Alquila cuatrimestre de El Hobbit", 0,
+				200);
 		alquilerDelHobbit.setCuatrimestresDelAlquiler(1);
 
 		alquilerDelHobbit.setLibroAlquilado(elHobbit);
@@ -140,5 +140,67 @@ public class LibreriaTest {
 		miLibreria.agregarCliente(cliente);
 
 		Assert.assertEquals(720.0, miLibreria.calcularMontoACobrar(cliente, Mes.MAYO), 0.1);
+	}
+
+	@Test
+	public void libreriaIndicaElMontoACobrarAUnClienteValidandoQueEsteRegistradoSinSuscripcionesEnUnMesDeterminado()
+			throws Exception {
+
+		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
+		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
+		libreria.agregarCliente(cliente);
+		Compra compra = new Compra(Mes.AGOSTO);
+		cliente.agregarCompra(compra);
+		Producto elhobbit = new Libro("el hobbit", 50.0);
+		Producto lapicera1 = new ArticuloDeLibreria("bic", 5.0);
+		Producto lapicera2 = new ArticuloDeLibreria("bic", 5.0);
+		Producto elgrafico = new Revista("el grafico", 30.0, 1);
+		compra.agregarProducto(elhobbit);
+		compra.agregarProducto(lapicera1);
+		compra.agregarProducto(lapicera2);
+		compra.agregarProducto(elgrafico);
+		//???cliente.agregarCompra(compra);
+		Assert.assertTrue(libreria.esClienteRegistrado(cliente));
+		Assert.assertEquals(92.1, libreria.calcularMontoACobrar(cliente, Mes.AGOSTO), 0.0);
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void libreriaIndicaQueElClienteNoEsValidoCuandoPideElMontoACobrarSinSuscripcionesEnUnMesDeterminado()
+			throws Exception {
+
+		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
+		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
+		Compra compra = new Compra(Mes.AGOSTO);
+		cliente.agregarCompra(compra);
+		Producto elhobbit = new Libro("el hobbit", 50.0);
+		Producto lapicera1 = new ArticuloDeLibreria("bic", 5.0);
+		Producto lapicera2 = new ArticuloDeLibreria("bic", 5.0);
+		Producto elgrafico = new Revista("el grafico", 30.0, 1);
+		compra.agregarProducto(elhobbit);
+		compra.agregarProducto(lapicera1);
+		compra.agregarProducto(lapicera2);
+		compra.agregarProducto(elgrafico);
+
+		// Assert.assertFalse(libreria.esClienteRegistrado(cliente));
+		Assert.assertEquals(92.1, libreria.calcularMontoACobrar(cliente, Mes.AGOSTO), 0.0);
+	}
+
+	@Test
+	public void libreriaIndicaQueElClienteNoEsValidoORegistrado() throws Exception {
+
+		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
+		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
+		Compra compra = new Compra(Mes.AGOSTO);
+		cliente.agregarCompra(compra);
+		Producto elhobbit = new Libro("el hobbit", 50.0);
+		Producto lapicera1 = new ArticuloDeLibreria("bic", 5.0);
+		Producto lapicera2 = new ArticuloDeLibreria("bic", 5.0);
+		Producto elgrafico = new Revista("el grafico", 30.0, 1);
+		compra.agregarProducto(elhobbit);
+		compra.agregarProducto(lapicera1);
+		compra.agregarProducto(lapicera2);
+		compra.agregarProducto(elgrafico);
+
+		Assert.assertFalse(libreria.esClienteRegistrado(cliente));
 	}
 }
