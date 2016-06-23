@@ -60,7 +60,6 @@ public class LibreriaTest {
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		libreria.agregarCliente(cliente);
 		Compra compra = new Compra(Mes.AGOSTO);
-		cliente.agregarCompra(compra);
 		Producto elhobbit = new Libro("el hobbit", 50.0);
 		Producto lapicera1 = new ArticuloDeLibreria("bic", 5.0);
 		Producto lapicera2 = new ArticuloDeLibreria("bic", 5.0);
@@ -69,6 +68,7 @@ public class LibreriaTest {
 		compra.agregarProducto(lapicera1);
 		compra.agregarProducto(lapicera2);
 		compra.agregarProducto(elgrafico);
+		cliente.agregarCompra(compra);
 
 		Assert.assertEquals(92.1, libreria.calcularMontoACobrar(cliente, Mes.AGOSTO), 0.0);
 	}
@@ -150,7 +150,6 @@ public class LibreriaTest {
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		libreria.agregarCliente(cliente);
 		Compra compra = new Compra(Mes.AGOSTO);
-		cliente.agregarCompra(compra);
 		Producto elhobbit = new Libro("el hobbit", 50.0);
 		Producto lapicera1 = new ArticuloDeLibreria("bic", 5.0);
 		Producto lapicera2 = new ArticuloDeLibreria("bic", 5.0);
@@ -159,7 +158,7 @@ public class LibreriaTest {
 		compra.agregarProducto(lapicera1);
 		compra.agregarProducto(lapicera2);
 		compra.agregarProducto(elgrafico);
-		//???cliente.agregarCompra(compra);
+		cliente.agregarCompra(compra);
 		Assert.assertTrue(libreria.esClienteRegistrado(cliente));
 		Assert.assertEquals(92.1, libreria.calcularMontoACobrar(cliente, Mes.AGOSTO), 0.0);
 	}
@@ -171,7 +170,6 @@ public class LibreriaTest {
 		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		Compra compra = new Compra(Mes.AGOSTO);
-		cliente.agregarCompra(compra);
 		Producto elhobbit = new Libro("el hobbit", 50.0);
 		Producto lapicera1 = new ArticuloDeLibreria("bic", 5.0);
 		Producto lapicera2 = new ArticuloDeLibreria("bic", 5.0);
@@ -180,8 +178,8 @@ public class LibreriaTest {
 		compra.agregarProducto(lapicera1);
 		compra.agregarProducto(lapicera2);
 		compra.agregarProducto(elgrafico);
-
-		// Assert.assertFalse(libreria.esClienteRegistrado(cliente));
+		cliente.agregarCompra(compra);
+		
 		Assert.assertEquals(92.1, libreria.calcularMontoACobrar(cliente, Mes.AGOSTO), 0.0);
 	}
 
@@ -191,7 +189,6 @@ public class LibreriaTest {
 		Libreria libreria = new Libreria("el papiro", "Gelly y Obes 2740, CABA");
 		Cliente cliente = new Cliente("juan perez", "Montes de Oca 4720, CABA");
 		Compra compra = new Compra(Mes.AGOSTO);
-		cliente.agregarCompra(compra);
 		Producto elhobbit = new Libro("el hobbit", 50.0);
 		Producto lapicera1 = new ArticuloDeLibreria("bic", 5.0);
 		Producto lapicera2 = new ArticuloDeLibreria("bic", 5.0);
@@ -200,7 +197,7 @@ public class LibreriaTest {
 		compra.agregarProducto(lapicera1);
 		compra.agregarProducto(lapicera2);
 		compra.agregarProducto(elgrafico);
-
+		cliente.agregarCompra(compra);
 		Assert.assertFalse(libreria.esClienteRegistrado(cliente));
 	}
 }

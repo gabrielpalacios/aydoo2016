@@ -24,7 +24,7 @@ public class Alquiler extends Producto {
 
 	public void setPrecioPorPeriodo(int precioDiario) {
 		if(precioDiario > 0){
-			this.precioPorPeriodo = precioDiario;		
+			this.precioPorPeriodo = precioDiario;
 		}else{
 			throw new RuntimeException("El precio no puede ser negativo");
 		}

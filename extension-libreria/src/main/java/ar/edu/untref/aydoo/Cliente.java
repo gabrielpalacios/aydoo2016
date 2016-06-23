@@ -1,7 +1,6 @@
 package ar.edu.untref.aydoo;
 
 import java.util.ArrayList;
-//import java.util.Iterator;
 import java.util.List;
 
 public class Cliente {
@@ -74,21 +73,4 @@ public class Cliente {
 
 		return comprasDelMes;
 	}
-
-//	public double calcularGastoDelMes(Mes mes) {
-//
-//		double total = 0;
-//		Iterator<Compra> iterador = listaDeCompras.iterator();
-//
-//		while (iterador.hasNext()) {
-//
-//			Compra compraActual = iterador.next();
-//
-//			if (compraActual.getMes().equals(mes)) {
-//				total += compraActual.getPrecioDeLaCompra();
-//			}
-//		}
-//		return total;
-//	}
-
 }
